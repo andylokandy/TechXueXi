@@ -1,23 +1,23 @@
 #!/bin/bash
 
-update() {
+# update() {
 
-    echo "检查更新"
-    git -C /xuexi/code/TechXueXi pull $Sourcepath $pullbranche
-    echo "检查更新完毕"
-    cp /xuexi/code/TechXueXi/*.sh /xuexi
-    cp -r /xuexi/code/TechXueXi/SourcePackages/* /xuexi
-    echo "下载更新"
-    git -C /xuexi/code/TechXueXi pull $Sourcepath $pullbranche
-    echo "下载完毕"
-    cp -r /xuexi/code/TechXueXi/SourcePackages/* /xuexi
-    echo "更新完成"
-}
+#     echo "检查更新"
+#     git -C /xuexi/code/TechXueXi pull $Sourcepath $pullbranche
+#     echo "检查更新完毕"
+#     cp /xuexi/code/TechXueXi/*.sh /xuexi
+#     cp -r /xuexi/code/TechXueXi/SourcePackages/* /xuexi
+#     echo "下载更新"
+#     git -C /xuexi/code/TechXueXi pull $Sourcepath $pullbranche
+#     echo "下载完毕"
+#     cp -r /xuexi/code/TechXueXi/SourcePackages/* /xuexi
+#     echo "更新完成"
+# }
 
-if [[ ${pullbranche} == "developing" ]]; then
-    echo "当前处于开发模式，自动更新"
-    update
-fi
+# if [[ ${pullbranche} == "developing" ]]; then
+#     echo "当前处于开发模式，自动更新"
+#     update
+# fi
 #echo "检查更新"
 #git -C /xuexi/code/TechXueXi pull $Sourcepath $pullbranche
 #echo "检查更新完毕"

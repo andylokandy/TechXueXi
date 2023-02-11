@@ -1,7 +1,7 @@
 
 FROM python:3.7-slim
-ARG usesource="https://hub.fastgit.xyz/TechXueXi/TechXueXi.git"
-ARG usebranche="dev"
+ARG usesource="https://github.com/andylokandy/TechXueXi.git"
+ARG usebranche="developing"
 ENV pullbranche=${usebranche}
 ENV Sourcepath=${usesource}
 RUN apt-get update
@@ -9,9 +9,11 @@ RUN apt-get install -y wget unzip libzbar0 git cron supervisor
 ENV TZ=Asia/Shanghai
 ENV AccessToken=
 ENV Secret=
+ENV ZhuanXiang=True
 ENV Nohead=True
-ENV Pushmode=1
+ENV Pushmode=6
 ENV islooplogin=False
+ENV Scheme=dtxuexi://appclient/page/study_feeds?url=
 ENV CRONTIME="30 9 * * *"
 # RUN rm -f /xuexi/config/*; ls -la
 COPY requirements.txt /xuexi/requirements.txt
@@ -40,6 +42,9 @@ RUN chmod +x ./supervisor.sh;./supervisor.sh
 RUN mkdir code
 WORKDIR /xuexi/code
 RUN git clone -b ${usebranche} ${usesource}; cp -r /xuexi/code/TechXueXi/SourcePackages/* /xuexi;
+# COPY SourcePackages/* /xuexi
 WORKDIR /xuexi
+# COPY user/settings.conf /xuexi/user/settings.conf
 EXPOSE 80
+EXPOSE 8088
 ENTRYPOINT ["/bin/bash", "./start.sh"]
